@@ -10,3 +10,5 @@ Add to ignore list:
 - override files,
 - CLI configuration files
 second new line
+
+Коммит через IDE
