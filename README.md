@@ -9,3 +9,4 @@ Add to ignore list:
 - all .tfvars, 
 - override files,
 - CLI configuration files
+second new line
