@@ -137,7 +137,7 @@ do
       ((attempt++))
       status=$(curl --connect-timeout 2 --write-out '%{http_code}' --silent --output /dev/null "$ip":80)
         if ((status==000)); then
-            echo "Service $ip:80 is available" >>log.txt
+            echo "Service $ip:80 is not available" >>log.txt
             exit
         fi
     done
