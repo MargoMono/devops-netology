@@ -17,26 +17,29 @@
         command: host -t A google.com
 
       - name: Installing tools
-        yum: >
-          name={{ item }}
-          state=present
-          update_cache=yes
+        apt:
+          package: "{{ item }}"
+          state: present
+          update_cache: yes
         with_items:
           - git
           - curl
 
-      - name: Add docker repository
-        command: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+      - name: Add Docker GPG apt Key
+        apt_key:
+          url: https://download.docker.com/linux/ubuntu/gpg
+          state: present
 
-      - name: Installing docker package
-        yum: >
-          name={{ item }}
-          state=present
-          update_cache=yes
-        with_items:
-          - docker-ce
-          - docker-ce-cli
-          - containerd.io
+      - name: Add Docker Repository
+        apt_repository:
+          repo: deb https://download.docker.com/linux/ubuntu focal stable
+          state: present
+
+      - name: Update apt and install docker-ce
+        apt:
+          name: docker-ce
+          state: latest
+          update_cache: true
 
       - name: Enable docker daemon
         systemd:

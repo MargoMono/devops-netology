@@ -111,6 +111,7 @@ services:
       - "0.0.0.0:9091:9091"
     volumes:
       - ./caddy:/etc/caddy
+      - ./caddy/resolv.conf:/etc/resolv.conf:ro
     environment:
       - ADMIN_USER=${ADMIN_USER:-admin}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
