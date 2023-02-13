@@ -1,0 +1,5 @@
+[nodes:children]
+manager
+
+[manager]
+10.129.0.25 ansible_host=158.160.11.240 ansible_user=margo_mono
